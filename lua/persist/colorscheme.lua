@@ -5,9 +5,9 @@ local store = require "persist.store"
 function M.set(scheme)
     if scheme == nil then
         local settings = store.read()
+        if settings == nil then return end
         scheme = settings.colorscheme
     end
-    if scheme == nil then return end
 
     vim.cmd("colorscheme " .. scheme)
 
